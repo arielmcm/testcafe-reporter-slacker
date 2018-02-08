@@ -33,7 +33,7 @@ export default function () {
           if (this.failedTests[fixture].length) {
             text = `${text}\n${fixture}\n`;
             this.failedTests[fixture].forEach(testName => {
-              text = `${text}\n${testName}`;
+              text = `${text}\n\t${testName}`;
             });
             text = `${text}\n`;
           }
