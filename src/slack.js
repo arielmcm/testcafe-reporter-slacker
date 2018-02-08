@@ -7,7 +7,10 @@ export default class Slack {
             method: 'post',
             url:    webhookUrl,
             data:   {
-                attachments: [message]
+                attachments: [{
+                    text:  message,
+                    color: 'good'
+                }]
             }
         }).catch(error => {
             console.log(error);
