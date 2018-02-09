@@ -56,7 +56,7 @@ export default function () {
 
     reportTestDone (name, testInfo) {
       if (testInfo.errs.length) {
-        const errorTest = `${this.symbols.err} ${name}`;
+        const errorTest = `✗ ${name}`;
 
         this.failedTests[this.currentFixture].push(errorTest);
         this.printTestFailed(errorTest);
