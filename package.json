@@ -1,6 +1,6 @@
 {
   "name": "testcafe-reporter-slacker",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "slacker TestCafe reporter plugin.",
   "repository": "https://github.com/arielmcm/testcafe-reporter-slacker",
   "author": {
