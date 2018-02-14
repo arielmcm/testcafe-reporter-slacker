@@ -1,5 +1,5 @@
 const Slack = require('./slack');
-const shouldSendMessage = require('../../../tconf').SEND_TO_SLACK;
+const { SEND_TO_SLACK, LOG_SUCCEEDED_TESTS } = require('../../../tconf');
 
 export default function () {
   return {
@@ -67,7 +67,9 @@ export default function () {
         this.printTestSkipped(name);
         return;
       }
-      this.printTestSucceeded(name);
+      if (LOG_SUCCEEDED_TESTS) {
+        this.printTestSucceeded(name);
+      }
     },
 
     processSuccess (text, durationStr) {
@@ -76,7 +78,7 @@ export default function () {
       text = `${text}\n*${resultMessage}*`;
       this.newline().write(this.chalk.bold.green(resultMessage)).newline().newline();
 
-      if (shouldSendMessage) {
+      if (SEND_TO_SLACK) {
         Slack.sendSuccessMessage(text);
       }
     },
@@ -96,7 +98,7 @@ export default function () {
       text = `${text}\n*${resultMessage}*`;
       this.setIndent(1).newline().write(this.chalk.bold.red(resultMessage)).newline().newline();
 
-      if (shouldSendMessage) {
+      if (SEND_TO_SLACK) {
         Slack.sendErrorMessage(text);
       }
     },
