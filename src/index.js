@@ -17,7 +17,7 @@ export default function () {
     reportFixtureStart (name) {
       this.currentFixture = `*${name}*`;
       this.failedTests[this.currentFixture] = [];
-      this.newline().write(name).newline().newline();
+      this.newline().setIndent(1).write(name).newline().newline();
     },
 
     renderErrors (errs) {
@@ -73,7 +73,7 @@ export default function () {
     },
 
     processSuccess (text, durationStr) {
-      const resultMessage = `All tests passed (Duration: ${durationStr})`;
+      const resultMessage = `${this.testCount}/${this.testCount} tests passed (Duration: ${durationStr})`;
 
       text = `${text}\n*${resultMessage}*`;
       this.newline().write(this.chalk.bold.green(resultMessage)).newline().newline();
