@@ -75,7 +75,7 @@ export default function () {
     processSuccess (text, durationStr) {
       const resultMessage = `${this.testCount}/${this.testCount} tests passed (Duration: ${durationStr})`;
 
-      text = `${text}\n*${resultMessage}*`;
+      text = `${text}\n\`${resultMessage}\``;
       this.newline().write(this.chalk.bold.green(resultMessage)).newline().newline();
 
       if (SEND_TO_SLACK) {
@@ -95,7 +95,7 @@ export default function () {
       });
       const resultMessage = `${this.testCount - passed}/${this.testCount} tests failed (Duration: ${duration})`;
 
-      text = `${text}\n*${resultMessage}*`;
+      text = `${text}\n*\`${resultMessage}\`*`;
       this.setIndent(1).newline().write(this.chalk.bold.red(resultMessage)).newline().newline();
 
       if (SEND_TO_SLACK) {

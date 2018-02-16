@@ -15,7 +15,7 @@ export default class Slack {
       method: 'post',
       url: webhookUrl,
       data: {
-        text: type === 'good' ? 'Succeeded' : 'Failed',
+        text: type === 'good' ? 'Succeeded :sunglasses:' : 'Failed :face_with_head_bandage:',
         attachments: [{
           text: message,
           color: type
